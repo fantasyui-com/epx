@@ -3,6 +3,9 @@
   "version": "1.0.2",
   "description": "Electron Package Execute (npx but for electron apps)",
   "main": "index.js",
+  "bin":{
+    "epx": "./index.js"
+  },
   "scripts": {
     "postinstall": "npm -g i electron",
     "test": "echo \"Error: no test specified\" && exit 1"
