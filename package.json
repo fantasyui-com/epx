@@ -1,0 +1,25 @@
+{
+  "name": "epx",
+  "version": "1.0.0",
+  "description": "Electron Package Execute (npx but for electron apps)",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "npm -g i electron",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fantasyui-com/epx.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fantasyui-com/epx/issues"
+  },
+  "homepage": "https://github.com/fantasyui-com/epx#readme",
+  "dependencies": {
+    "commander": "^2.11.0",
+    "tmp": "0.0.31"
+  }
+}
