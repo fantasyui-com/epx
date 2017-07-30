@@ -7,13 +7,12 @@ npm -g i epx
 
 ## Usage
 
-epx https://github.com/electron/electron-quick-start
+epx bootstrap-electron 
 
 ## Goal
 
-Goal of this project is to allow ```epx url```, where url is an electron application repository.
+Goal of this project is to allow ```epx name```, where name is an electron application module.
 
 ## Notes
 
-This program will need to be installed via npm -g i epx, after that epx will
-clone the application repository into ~/tmp and spawn a electron instance.
+See https://github.com/fantasyui-com/bootstrap-electron for sample application.

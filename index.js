@@ -1,31 +1,32 @@
 #!/usr/bin/env node
 
 const setup = require('commander')
-const path = require('path')
 const tmp = require('tmp')
+const pacote = require('pacote');
 const { spawn } = require('child_process');
+const tmpobj = tmp.dirSync();
 
-setup
-  .version('1.0.0')
-  .usage('<url>')
-  setup.parse(process.argv);
+setup.version('1.0.0').usage('<module>');
+setup.parse(process.argv);
 
-const url = setup.args[0];
+async function main(){
 
-function exe(command, args){
-  const instance = spawn(command, args);
-  instance.stdout.on('data', (data) => {
-    console.log(`stdout: ${data}`);
+  await pacote.extract(setup.args[0], tmpobj.name);
+
+  const electron = spawn("electron", [tmpobj.name]);
+
+  electron.stdout.on('data', (data) => {
+    console.log(`electron stdout: ${data}`);
   });
-  instance.stderr.on('data', (data) => {
-    console.log(`stderr: ${data}`);
+
+  electron.stderr.on('data', (data) => {
+    console.log(`electron stderr: ${data}`);
   });
-  instance.on('close', (code) => {
-    console.log(`child process exited with code ${code}`);
+
+  electron.on('close', (code) => {
+    console.log(`electron child process exited with code ${code}`);
   });
+
 }
 
-
-const tmpobj = tmp.dirSync();
-exe("git", ['clone', url, tmpobj.name])
-exe("electron", [tmpobj.name])
+main();
