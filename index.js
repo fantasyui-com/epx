@@ -13,18 +13,29 @@ async function main(){
 
   await pacote.extract(setup.args[0], tmpobj.name);
 
-  const electron = spawn("electron", [tmpobj.name]);
+  const install = spawn("npm", ["i"], {cwd:tmpobj.name});
+   install.stdout.on('data', (data) => {
+     console.log(`install stdout: ${data}`);
+   });
+   install.stderr.on('data', (data) => {
+     console.log(`install stderr: ${data}`);
+   });
 
-  electron.stdout.on('data', (data) => {
+   install.on('close', (code) => {
+
+    console.log(`install child process exited with code ${code}`);
+
+    const electron = spawn("electron", [tmpobj.name]);
+    electron.stdout.on('data', (data) => {
     console.log(`electron stdout: ${data}`);
-  });
-
-  electron.stderr.on('data', (data) => {
+    });
+    electron.stderr.on('data', (data) => {
     console.log(`electron stderr: ${data}`);
-  });
-
-  electron.on('close', (code) => {
+    });
+    electron.on('close', (code) => {
     console.log(`electron child process exited with code ${code}`);
+    });
+
   });
 
 }
