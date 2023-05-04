@@ -24,7 +24,7 @@
   "homepage": "https://github.com/fantasyui-com/epx#readme",
   "dependencies": {
     "commander": "^2.20.3",
-    "pacote": "^9.5.12",
+    "pacote": "^15.1.3",
     "tmp": "0.1.0"
   }
 }
