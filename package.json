@@ -1,6 +1,6 @@
 {
   "name": "epx",
-  "version": "1.19.0",
+  "version": "1.20.0",
   "description": "Electron Package Execute (npx but for electron apps)",
   "main": "index.js",
   "bin": {
